@@ -9,3 +9,6 @@ RUN cp /target/docker-spring-boot.jar docker-spring-boot.jar
 EXPOSE 8085
 ENTRYPOINT ["java", "-jar", "docker-spring-boot.jar"]
 RUN rm -rf src
+RUN rm -rf .mvn
+RUN rm -f pom.xml
+RUN rm -f mvnw
