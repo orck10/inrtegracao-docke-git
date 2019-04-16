@@ -15,7 +15,9 @@
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
-		<java.version>1.8</java.version>
+		<jdk.version>12</jdk.version>
+		<dockerfile.version>1.2.0</dockerfile.version>
+  		<docker.image.prefix>surevine</docker.image.prefix>
 	</properties>
 
 	<dependencies>
@@ -38,6 +40,11 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+		    <groupId>com.spotify</groupId>
+		    <artifactId>docker-maven-plugin</artifactId>
+		    <version>1.2.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -45,7 +52,23 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
+			</plugin>		
+		    <plugin>
+		      <groupId>com.spotify</groupId>
+		      <artifactId>docker-maven-plugin</artifactId>
+		      <version>1.2.0</version>
+		      <configuration>
+		        <imageName>docker-spring-boot</imageName>
+		        <dockerDirectory>.</dockerDirectory>
+		        <resources>
+		           <resource>
+		             <targetPath>/</targetPath>
+		             <directory>target</directory>
+		             <include>docker-spring-boot.jar</include>
+		           </resource>
+		        </resources>
+		      </configuration>
+		    </plugin>
 		</plugins>
 		<finalName>docker-spring-boot</finalName>
 	</build>
