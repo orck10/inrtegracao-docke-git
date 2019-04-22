@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloResource {
 	@GetMapping
 	public String hello() {
-		return "Hello Rest, peace in the stadiums";
+		return "Hello Rest, peace in the stadiums \n No War";
 	}
 }
