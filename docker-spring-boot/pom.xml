@@ -67,7 +67,23 @@
 		             <include>docker-spring-boot.jar</include>
 		           </resource>
 		        </resources>
+		        <imageTags>
+		           <imageTag>0.5.0</imageTag>
+		           <imageTag>latest</imageTag>
+		        </imageTags>
 		      </configuration>
+		      <executions>
+		      	<execution>
+			      <id>push-image</id>
+			      <phase>deploy</phase>
+			      <goals>
+			        <goal>push</goal>
+			      </goals>
+			      <configuration>
+			        <imageName>jorgefreitas/dockerteste:0.5.0</imageName>
+			      </configuration>
+			    </execution>     
+		      </executions>
 		    </plugin>
 		</plugins>
 		<finalName>docker-spring-boot</finalName>
